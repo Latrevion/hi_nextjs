@@ -1,9 +1,13 @@
+import { notFound } from "next/navigation";
 export default async function ReviewDetails({
   params,
 }: {
   params: Promise<{ productsId: string; reviewsId: string }>;
 }) {
   const { productsId, reviewsId } = await params;
+  if (parseInt(reviewsId) > 100) {
+    return notFound();
+  }
 
   return (
     <div>
